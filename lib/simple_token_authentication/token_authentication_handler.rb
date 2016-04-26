@@ -36,7 +36,8 @@ module SimpleTokenAuthentication
     end
 
     def fallback!(entity, fallback_handler)
-      fallback_handler.fallback!(self, entity)
+      devise_name = env['devise.mapping'].name
+      fallback_handler.fallback!(self, entity, devise_name)
     end
 
     def token_correct?(record, entity, token_comparator)
